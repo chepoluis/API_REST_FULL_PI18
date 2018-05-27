@@ -7,9 +7,10 @@ block content
         img(src = "halo-3.jpg")
         article.item
             div
-                a.button.add(href="/agregar") Agregar
+                // Boton con bootstrap
+                a.button.add(href="/agregar", class="btn btn-primary") Agregar
             if(data.length)
-                table.table
+                table.table.table-dark
                     tr
                         th Nombre
                         th Twitter
