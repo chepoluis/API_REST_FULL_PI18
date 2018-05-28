@@ -12,22 +12,19 @@ block content
             if(data.length)
                 table.table.table-dark
                     tr
-                        th Nombre
-                        th Twitter
-                        th País
-                        th Equipo
+                        th Nombre completo
+                        th Domicilio
+                        th Celular
                         th
-                        th
-                    each contacto in data
+                    each seller in data
                         tr
-                            td #{contacto.name}
-                            td #{contacto.twitter}
-                            td #{contacto.country}
-                            td #{contacto.side}
+                            td #{seller.completeName}
+                            td #{seller.adressLine}
+                            td #{seller.cellPhone}
                             td
-                                a.button.edit(href="/editar/"+ contacto.id) Editar
+                                a.button.edit(href="/editar/"+ seller.idSeller) Editar
                             td
-                                form(method="post", action="/eliminar/"+ contacto.id)
+                                form(method="post", action="/eliminar/"+ seller.idSeller)
                                     input(type="hidden",name="_method", value="DELETE")
                                     input.button.delete(type="button", value="Eliminar", onclick="eliminar(this)")
                 script.

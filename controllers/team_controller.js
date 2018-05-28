@@ -20,7 +20,7 @@ class TeamController {
         tm.getOne(id, (err, data) => {
             if (!err) {
                 res.render('edit', { 
-                    title: 'Editar Contacto',
+                    title: 'Editar vendedor',
                     data: data 
                 });
             }
@@ -29,11 +29,10 @@ class TeamController {
 
     save(req, res, next) {
         let contacto = {
-            id: (req.body.id || 0),
-            name: req.body.name, 
-            twitter: req.body.twitter,
-            country: req.body.country,
-            side: req.body.side
+            idSeller: (req.body.idSeller || 0),
+            completeName: req.body.completeName, 
+            adressLine: req.body.adressLine,
+            cellPhone: req.body.cellPhone
         };
 
         console.log(contacto);
