@@ -7,6 +7,7 @@ router
     .get('/', tc.getAll)
     .get('/agregar', tc.addForm)
     .get('/editar/:id', tc.getOne)
+    .get('/index2', tc.index2)
     .post('/', tc.save)
     .put('/actualizar/:id', tc.save)
     .delete('/eliminar/:id', tc.delete)

@@ -27,6 +27,8 @@ block content
                                 form(method="post", action="/eliminar/"+ seller.idSeller)
                                     input(type="hidden",name="_method", value="DELETE")
                                     input.button.delete(type="button", value="Eliminar", onclick="eliminar(this)")
+                            a.button.edit(href="/index2") Editar
+                            
                 script.
                     function eliminar(input){
                         let deleteOK = confirm('¿Estás seguro de eliminar el registro'); // funcion Dos botones aceptar y rechazar

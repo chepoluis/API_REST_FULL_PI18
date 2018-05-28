@@ -62,6 +62,10 @@ class TeamController {
         res.render('add', { title: 'Agregar Contacto' });
     }
 
+    index2(req, res, next) {
+        res.render('index2');
+    }
+
     error404(req, res, next) {
         let err = new Error();
         err.status = 404;
