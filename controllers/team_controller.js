@@ -74,6 +74,10 @@ class TeamController {
         res.render('signup');
     }
 
+    login(req, res, next) {
+        res.render('login');
+    }
+
     error404(req, res, next) {
         let err = new Error();
         err.status = 404;

@@ -9,6 +9,7 @@ router
     .get('/editar/:id', tc.getOne)
     .get('/product', tc.shop) 
     .get('/register', tc.signup)
+    .get('/login', tc.login)
     .post('/', tc.save)
     .put('/actualizar/:id', tc.save)
     .delete('/eliminar/:id', tc.delete)
