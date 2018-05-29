@@ -1,0 +1,39 @@
+extends ./includes/layout.pug
+
+block content
+    section.container
+        // La clase se declara con un punto .
+        h1.header= title  
+        img(src = "halo-3.jpg")
+        article.item
+            div
+                // Boton con bootstrap
+                a.button.add(href="/agregar", class="btn btn-primary") Agregar
+            if(data.length)
+                table.table.table-dark
+                    tr
+                        th Nombre completo
+                        th Domicilio
+                        th Celular
+                        th
+                    each seller in data
+                        tr
+                            td #{seller.completeName}
+                            td #{seller.adressLine}
+                            td #{seller.cellPhone}
+                            td
+                                a.button.edit(href="/editar/"+ seller.idSeller) Editar
+                            td
+                                form(method="post", action="/eliminar/"+ seller.idSeller)
+                                    input(type="hidden",name="_method", value="DELETE")
+                                    input.button.delete(type="button", value="Eliminar", onclick="eliminar(this)")
+                            a.button.edit(href="/index2") Editar
+                            
+                script.
+                    function eliminar(input){
+                        let deleteOK = confirm('¿Estás seguro de eliminar el registro'); // funcion Dos botones aceptar y rechazar
+                        return (deleteOK) ? input.parentNode.submit() : false;
+                        //ParentNode es saber su padre
+                    }
+            else
+                div.error No tienes contactos que mostrar

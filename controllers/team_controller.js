@@ -62,8 +62,16 @@ class TeamController {
         res.render('add', { title: 'Agregar Contacto' });
     }
 
-    index2(req, res, next) {
-        res.render('index2');
+    index(req, res, next) {
+        res.render('index');
+    }
+
+    shop(req, res, next) {
+        res.render('product');
+    }
+
+    signup(req, res, next) {
+        res.render('signup');
     }
 
     error404(req, res, next) {
