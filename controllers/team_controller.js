@@ -67,16 +67,66 @@ class TeamController {
     }
 
     shop(req, res, next) {
-        res.render('product');
+        res.render('product', {title: 'Shop'});
     }
 
-    signup(req, res, next) {
+    signup(req, res, next) { 
         res.render('signup');
     }
 
     login(req, res, next) {
         res.render('login');
     }
+
+    // blog(req, res, next) {
+    //     let id = req.params.id; 
+    //     console.log(id);
+
+    //     tm.getOne(id, (err, data) => {
+    //         if (!err) {
+    //             res.render('blog', { 
+    //                 title: 'Editar vendedor',
+    //                 data: data 
+    //             });
+    //         }
+    //     })
+    // } 
+
+    blog(req, res, next) {
+        tm.getAll((err, data) => {
+            if (!err) {
+                res.render('blog', {
+                    title: 'Blog',
+                    data: data
+                }); 
+            }
+        })
+    }
+
+    productDetail(req, res, next) {
+        tm.getAll((err, data) => {
+            if (!err) {
+                res.render('product-detail', {
+                    title: 'Product detail',
+                    data: data
+                }); 
+            }
+        })
+    }
+
+    prueba(req, res, next) {
+        let id = req.params.id; 
+        console.log(id);
+
+        tm.getOne(id, (err, data) => {
+            if (!err) {
+                res.render('prueba', { 
+                    title: 'Editar vendedor',
+                    data: data 
+                });
+            }
+        })
+    } 
 
     error404(req, res, next) {
         let err = new Error();

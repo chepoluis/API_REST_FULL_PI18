@@ -10,9 +10,17 @@ router
     .get('/product', tc.shop) 
     .get('/register', tc.signup)
     .get('/login', tc.login)
+    .get('/productdetail', tc.productDetail)
+
+    .get('/blog', tc.blog)
+    .get('/prueba/:id', tc.prueba)
+ 
     .post('/', tc.save)
+
     .put('/actualizar/:id', tc.save)
+
     .delete('/eliminar/:id', tc.delete)
+
     .use(tc.error404);
 
 module.exports = router;
