@@ -14,8 +14,10 @@ router
 
     .get('/blog', tc.blog)
     .get('/prueba/:id', tc.prueba)
+    .get('/adduser', tc.addUser)
  
-    .post('/', tc.save)
+    // .post('/', tc.save)
+    .post('/', tc.saveUser)
 
     .put('/actualizar/:id', tc.save)
 

@@ -24,6 +24,17 @@ class TeamModel {
     delete(id, cb) {
         conn.query('DELETE FROM seller WHERE idSeller = ?', id, cb);
     }
+
+    saveUser(data, cb) {
+        conn.query('SELECT * FROM employees WHERE idEmployeed = ?', data.idEmployeed, (err, rows) => {
+            console.log(`Numero de registros ${rows.length}`);
+
+            if (!err)
+                return (rows.length == 1)
+                    ? conn.query('UPDATE employees SET ? WHERE idEmployeed = ?', [data, data.idEmployeed], cb)
+                    : conn.query('INSERT INTO employees SET ?', data, cb);
+        });
+    }
 }
 
 module.exports = TeamModel;

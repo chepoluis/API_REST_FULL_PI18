@@ -128,6 +128,33 @@ class TeamController {
         })
     } 
 
+    saveUser(req, res, next) {
+        let employeed = {
+            idEmployeed: (req.body.idEmployeed || 0),
+            completeName: req.body.completeName, 
+            adressLine: req.body.adressLine,
+            cellphone: req.body.cellphone,
+            email: req.body.email,
+            password: req.body.password,
+            workstation: req.body.workstation,
+            sucursales_sucursalCode: req.body.sucursales_sucursalCode,
+            sucursales_mainAgency_idAgencyCode: req.body.sucursales_mainAgency_idAgencyCode
+        };
+
+        console.log(employeed);
+        tm.saveUser(employeed, (err) => {
+            if (!err) {
+                res.redirect('/');
+            } else {
+                return next(new Error('Registro no salvado'));
+            }
+        });
+    }
+
+    addUser(req, res, next) {
+        res.render('addUserTest');
+    }
+
     error404(req, res, next) {
         let err = new Error();
         err.status = 404;
