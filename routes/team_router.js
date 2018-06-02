@@ -17,7 +17,7 @@ router
     .get('/adduser', tc.addUser)
  
     // .post('/', tc.save)
-    .post('/', tc.saveUser)
+    .post('/login', tc.saveUser)
 
     .put('/actualizar/:id', tc.save)
 

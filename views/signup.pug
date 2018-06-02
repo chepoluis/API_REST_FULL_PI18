@@ -39,7 +39,7 @@ block content
 				<div class="login100-more" style="background-image: url('imageslogin/mazdacarretera.jpg');"></div>
 
 				<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-					<form class="login100-form validate-form">
+					<form class="login100-form validate-form" method="post" action="/login">
 						<a href="/" class="logo">
 							<img src="images/icons/mazda-small.png" alt="IMG-LOGO">
 						</a>
@@ -50,7 +50,7 @@ block content
 
 						<div class="wrap-input100 validate-input" data-validate="Name is required">
 							<span class="label-input100">Full Name</span>
-							<input class="input100" type="text" name="name" placeholder="Name...">
+							<input class="input100" type="text" name="completeName" placeholder="Name...">
 							<span class="focus-input100"></span>
 						</div>
 
@@ -62,13 +62,13 @@ block content
 
 						<div class="wrap-input100 validate-input" data-validate = "Password is required">
 							<span class="label-input100">Password</span>
-							<input class="input100" type="text" name="pass" placeholder="*************">
+							<input class="input100" type="text" name="password" placeholder="*************">
 							<span class="focus-input100"></span>
 						</div>
 
 						<div class="wrap-input100 validate-input" data-validate = "Password is required">
 							<span class="label-input100">Adress line</span>
-							<input class="input100" type="text" name="adress" placeholder="Adress line...">
+							<input class="input100" type="text" name="adressLine" placeholder="Adress line...">
 							<span class="focus-input100"></span>
 						</div>
 
@@ -86,20 +86,20 @@ block content
 
 						<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 							<span class="label-input100">Sucursal code</span>
-							<input class="input100" type="text" name="sucursalcode" placeholder="Sucursal code...">
+							<input class="input100" type="text" name="sucursales_sucursalCode" placeholder="Sucursal code...">
 							<span class="focus-input100"></span>
 						</div>
 
 						<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 							<span class="label-input100">Agency code</span>
-							<input class="input100" type="text" name="agencyCode" placeholder="Agency code...">
+							<input class="input100" type="text" name="sucursales_mainAgency_idAgencyCode" placeholder="Agency code...">
 							<span class="focus-input100"></span>
 						</div>
 
 						<div class="container-login100-form-btn">
 							<div class="wrap-login100-form-btn">
 								<div class="login100-form-bgbtn"></div>
-								<button class="login100-form-btn">
+								<button class="login100-form-btn" href="/login">
 									Sign Sign Up
 								</button>
 							</div>

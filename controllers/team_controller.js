@@ -144,7 +144,7 @@ class TeamController {
         console.log(employeed);
         tm.saveUser(employeed, (err) => {
             if (!err) {
-                res.redirect('/');
+                res.redirect('/login');
             } else {
                 return next(new Error('Registro no salvado'));
             }
