@@ -1,4 +1,4 @@
-extends ./includes/layout.pug
+extends .././includes/layout.pug
 
 block content
 	<!DOCTYPE html>
@@ -39,7 +39,7 @@ block content
 				<div class="login100-more" style="background-image: url('imageslogin/mazdacarretera.jpg');"></div>
 
 				<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-					<form class="login100-form validate-form" method="post" action="/login">
+					<form class="login100-form validate-form" method="post" action="/registeruser" autocomplete='off'>
 						<a href="/" class="logo">
 							<img src="images/icons/mazda-small.png" alt="IMG-LOGO">
 						</a>
@@ -62,7 +62,7 @@ block content
 
 						<div class="wrap-input100 validate-input" data-validate = "Password is required">
 							<span class="label-input100">Password</span>
-							<input class="input100" type="text" name="password" placeholder="*************">
+							<input class="input100" type="password" name="password" placeholder="*************">
 							<span class="focus-input100"></span>
 						</div>
 
@@ -99,7 +99,7 @@ block content
 						<div class="container-login100-form-btn">
 							<div class="wrap-login100-form-btn">
 								<div class="login100-form-bgbtn"></div>
-								<button class="login100-form-btn" href="/login">
+								<button class="login100-form-btn" href="/loginuser">
 									Sign Sign Up
 								</button>
 							</div>

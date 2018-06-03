@@ -9,7 +9,27 @@ const express = require('express'),
     viewDir = `${__dirname}/views`,
     port = (process.env.PORT || 3000 );
 
+// Alertas y manejo de sesiones
+let flash = require('connect-flash');
+let session = require('express-session');
+let passport = require('passport');
+require('./passport/passport')(passport);
+
 let app = express();
+
+// app.use(cookieParser());
+// middleware
+app.use(session({
+  // Variables de sesion
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(flash());
+
+// passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 app
     .set('views', viewDir)

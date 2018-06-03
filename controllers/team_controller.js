@@ -70,14 +70,6 @@ class TeamController {
         res.render('product', {title: 'Shop'});
     }
 
-    signup(req, res, next) { 
-        res.render('signup');
-    }
-
-    login(req, res, next) {
-        res.render('login');
-    }
-
     // blog(req, res, next) {
     //     let id = req.params.id; 
     //     console.log(id);
@@ -128,6 +120,15 @@ class TeamController {
         })
     } 
 
+    
+    signup(req, res, next) { 
+        res.render('users/signup');
+    }
+
+    login(req, res, next) {
+        res.render('users/login', {message: req.flash('info')});
+    }
+
     saveUser(req, res, next) {
         let employeed = {
             idEmployeed: (req.body.idEmployeed || 0),
@@ -144,6 +145,7 @@ class TeamController {
         console.log(employeed);
         tm.saveUser(employeed, (err) => {
             if (!err) {
+                req.flash('info', 'Usuario registrado exitosamente.');
                 res.redirect('/login');
             } else {
                 return next(new Error('Registro no salvado'));
