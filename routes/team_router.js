@@ -3,6 +3,7 @@ const TeamControler = require('../controllers/team_controller'),
     router = express.Router(),
     tc = new TeamControler(); //Instancia en la clase
 let passport = require('passport');
+let AuthMiddleware = require('.././middleware/auth');
     
 
 router
@@ -16,6 +17,10 @@ router
     .get('/blog', tc.blog)
     .get('/prueba/:id', tc.prueba)
     .get('/adduser', tc.addUser)
+    .get('/panel', AuthMiddleware.isLogged, tc.getUserPanel)
+
+    .get('/logout', tc.logout)
+    
     // .post('/', tc.save)
     .post('/registeruser', tc.saveUser)
     .post('/login', passport.authenticate('local', {

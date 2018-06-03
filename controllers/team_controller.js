@@ -63,7 +63,10 @@ class TeamController {
     }
 
     index(req, res, next) {
-        res.render('index');
+        res.render('index', {
+            isAuthenticated : req.isAuthenticated(),
+            user : req.user
+        });
     }
 
     shop(req, res, next) {
@@ -126,7 +129,14 @@ class TeamController {
     }
 
     login(req, res, next) {
-        res.render('users/login', {message: req.flash('info')});
+        res.render('users/login', {message: req.flash('info'), authmessage : req.flash('authmessage')});
+    }
+
+    // Cerrar sesion
+    logout(req, res, next) {
+        req.logout();
+        // El que redirecciona es el res no el req
+        res.redirect('/');
     }
 
     saveUser(req, res, next) {
@@ -156,6 +166,13 @@ class TeamController {
     addUser(req, res, next) {
         res.render('addUserTest');
     }
+
+    getUserPanel(req, res, next) {
+        res.render('users/panel', {
+            isAuthenticated : req.isAuthenticated(),
+            user : req.user
+        });
+    }  
 
     error404(req, res, next) {
         let err = new Error();

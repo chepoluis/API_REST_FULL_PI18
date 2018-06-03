@@ -31,26 +31,26 @@ block content
 		<link rel="stylesheet" type="text/css" href="csslogin/util.css">
 		<link rel="stylesheet" type="text/css" href="csslogin/main.css">
 	<!--===============================================================================================-->
-	</head>
+	</head> 
 	<body style="background-color: #999999;">
 		
 		<div class="limiter">
-
 			// Alerta success
 			if message.length > 0
 				div(class='alert alert-success' role='alert')= message	
 
-			<div class="container-login100">
-				<div class="login100-more" style="background-image: url('imageslogin/mazdacarretera.jpg');"></div>
-
+			<div class="container-login100">			
+				<div class="login100-more" style="background-image: url('imageslogin/mazdacarretera.jpg');"></div>			
 				<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 					<form class="login100-form validate-form" method="post" action="/login" autocomplete='off'>
-						<a href="/" class="logo">
-							<img src="images/icons/mazda-small.png" alt="IMG-LOGO">
-						</a>
+						//- <a href="/" class="logo">
+						//- 	<img src="images/icons/mazda-small.png" alt="IMG-LOGO">
+						//- </a>
 
 						<span class="login100-form-title p-b-59">
 							Log Log In
+							if authmessage.length > 0
+								div(class='alert alert-danger' role='alert')= authmessage							
 						</span>
 
 						<div class="wrap-input100 validate-input" data-validate="Email is required">
@@ -81,7 +81,7 @@ block content
 						</div>
 					</form>
 				</div>
-			</div>
+			</div>				
 		</div>
 		
 	<!--===============================================================================================-->

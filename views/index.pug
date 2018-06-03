@@ -46,123 +46,136 @@
 				<a href="/" class="logo">
 					<img src="images/icons/mazda-nombre.png" alt="IMG-LOGO">
 				</a>
-
-				<!-- Menu -->
-				<div class="wrap_menu">
-					<nav class="menu">
-						<ul class="main_menu">
-							<li>
-								a.button.edit(href="/product") Vehicles
-							</li>
-
-							<li class="sale-noti">
-								<a href="product.html">Sale</a>
-							</li>
-
-							<li>
-								<a href="/adduser">Add user test</a>
-							</li>
-
-							<li>
-								<a href="/blog/1">Blog</a>
-							</li>
-
-							<li>
-								<a href="/editar/1">Prueba*</a>
-							</li>
-
-							<li>
-								<a href="/prueba/1">Prueba*</a>
-							</li>
-						</ul>
-					</nav>
-				</div>
-
-				<!-- Header Icon -->
-				<div class="header-icons">
-					<a href="#" class="header-wrapicon1 dis-block">
-						//- <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
-						<a href="/login"> Log in</a>
-						<span class="linedivide1"></span>
-						<a href="/register">Sign up</a>
-					</a>
-
-					<div class="header-wrapicon2">
-
-						<!-- Header cart noti -->
-						<div class="header-cart header-dropdown">
-							<ul class="header-cart-wrapitem">
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="images/item-cart-01.jpg" alt="IMG">
-									</div>
-
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											White Shirt With Pleat Detail Back
-										</a>
-
-										<span class="header-cart-item-info">
-											
-										</span>
-									</div>
+				<!-- Si se inicio sesión se muestra el menu -->	
+				if isAuthenticated 
+					<!-- Menu -->
+					<div class="wrap_menu">
+						<nav class="menu">
+							<ul class="main_menu">
+								<li>
+									a.button.edit(href="/product") Vehicles
 								</li>
 
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="images/item-cart-02.jpg" alt="IMG">
-									</div>
-
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											Converse All Star Hi Black Canvas
-										</a>
-
-										<span class="header-cart-item-info">
-											
-										</span>
-									</div>
+								<li class="sale-noti">
+									<a href="product.html">Sale</a>
 								</li>
 
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="images/item-cart-03.jpg" alt="IMG">
-									</div>
+								<li>
+									<a href="/adduser">Add user test</a>
+								</li>
 
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											Nixon Porter Leather Watch In Tan
-										</a>
+								<li>
+									<a href="/blog/1">Blog</a>
+								</li>
 
-										<span class="header-cart-item-info">
-											
-										</span>
-									</div>
+								<li>
+									<a href="/editar/1">Prueba*</a>
+								</li>
+
+								<li>
+									<a href="/prueba/1">Prueba*</a>
+									//- p= 'Bienvenido ' + user.completeName
 								</li>
 							</ul>
+						</nav>
+					</div>
+				
+				if isAuthenticated
+					<div class="header-icons">
+						p= 'Bienvenid(@) ' + user.completeName
+						<a href="#" class="header-wrapicon1 dis-block">
+							//- <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+							<span class="linedivide1"></span>
+							<a href="/logout">Log out</a>
+						</a>
+					</div>
+				//- Si no esta registrado se mostrara lo siguiente
+				if !isAuthenticated
+					<!-- Header Icon -->
+					<div class="header-icons">
+						<a href="#" class="header-wrapicon1 dis-block">
+							//- <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+							<a href="/login"> Log in</a>
+							<span class="linedivide1"></span>
+							<a href="/register">Sign up</a>
+						</a>
 
-							<div class="header-cart-total">
-								
-							</div>
+						<div class="header-wrapicon2">
 
-							<div class="header-cart-buttons">
-								<div class="header-cart-wrapbtn">
-									<!-- Button -->
-									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-										View Cart
-									</a>
+							<!-- Header cart noti -->
+							<div class="header-cart header-dropdown">
+								<ul class="header-cart-wrapitem">
+									<li class="header-cart-item">
+										<div class="header-cart-item-img">
+											<img src="images/item-cart-01.jpg" alt="IMG">
+										</div>
+
+										<div class="header-cart-item-txt">
+											<a href="#" class="header-cart-item-name">
+												White Shirt With Pleat Detail Back
+											</a>
+
+											<span class="header-cart-item-info">
+												
+											</span>
+										</div>
+									</li>
+
+									<li class="header-cart-item">
+										<div class="header-cart-item-img">
+											<img src="images/item-cart-02.jpg" alt="IMG">
+										</div>
+
+										<div class="header-cart-item-txt">
+											<a href="#" class="header-cart-item-name">
+												Converse All Star Hi Black Canvas
+											</a>
+
+											<span class="header-cart-item-info">
+												
+											</span>
+										</div>
+									</li>
+
+									<li class="header-cart-item">
+										<div class="header-cart-item-img">
+											<img src="images/item-cart-03.jpg" alt="IMG">
+										</div>
+
+										<div class="header-cart-item-txt">
+											<a href="#" class="header-cart-item-name">
+												Nixon Porter Leather Watch In Tan
+											</a>
+
+											<span class="header-cart-item-info">
+												
+											</span>
+										</div>
+									</li>
+								</ul>
+
+								<div class="header-cart-total">
+									
 								</div>
 
-								<div class="header-cart-wrapbtn">
-									<!-- Button -->
-									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-										Check Out
-									</a>
+								<div class="header-cart-buttons">
+									<div class="header-cart-wrapbtn">
+										<!-- Button -->
+										<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+											View Cart
+										</a>
+									</div>
+
+									<div class="header-cart-wrapbtn">
+										<!-- Button -->
+										<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+											Check Out
+										</a>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 
@@ -331,60 +344,60 @@
 	<section class="slide1">
 		<div class="wrap-slick1">
 			<div class="slick1">
-				<div class="item-slick1 item1-slick1" style="background-image: url(images/mazdamain.jpg);">
+				<div class="item-slick1 item1-slick1" style="background-image: url(images/feria-mazda.jpg);">
 					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
-							Women Collection 2018
-						</span>
+						//- <span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
+						//- 	Women Collection 2018
+						//- </span>
 
 						<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
-							New arrivals
+							New Powerful
 						</h2>
 
-						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
-							<!-- Button -->
-							<a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
-								Shop Now
-							</a>
-						</div>
+						//- <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
+						//- 	<!-- Button -->
+						//- 	<a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+						//- 		Shop Now
+						//- 	</a>
+						//- </div>
 					</div>
 				</div>
 
-				<div class="item-slick1 item2-slick1" style="background-image: url(images/master-slide-03.jpg);">
+				<div class="item-slick1 item2-slick1" style="background-image: url(images/panel-mazda.jpg);">
 					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rollIn">
-							Women Collection 2018
-						</span>
+						//- <span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rollIn">
+						//- 	Women Collection 2018
+						//- </span>
 
 						<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
-							New arrivals
+							New Elegant
 						</h2>
 
-						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
-							<!-- Button -->
-							<a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
-								Shop Now
-							</a>
-						</div>
+						//- <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
+						//- 	<!-- Button -->
+						//- 	<a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+						//- 		Shop Now
+						//- 	</a>
+						//- </div>
 					</div>
 				</div>
 
-				<div class="item-slick1 item3-slick1" style="background-image: url(images/master-slide-04.jpg);">
+				<div class="item-slick1 item3-slick1" style="background-image: url(images/field-mazda.jpg);">
 					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
-							Women Collection 2018
-						</span>
+						//- <span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
+						//- 	Women Collection 2018
+						//- </span>
 
 						<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
-							New arrivals
+							New Wild
 						</h2>
 
-						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
-							<!-- Button -->
-							<a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
-								Shop Now
-							</a>
-						</div>
+						//- <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
+						//- 	<!-- Button -->
+						//- 	<a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+						//- 		Shop Now
+						//- 	</a>
+						//- </div>
 					</div>
 				</div>
 
