@@ -55,7 +55,7 @@ class TeamController {
             } else {
                 return next(new Error('Registro no encontrado'))
             }
-        });
+        }); 
     }
 
     addForm(req, res, next) {
@@ -70,7 +70,17 @@ class TeamController {
     }
 
     shop(req, res, next) {
-        res.render('product', {title: 'Shop'});
+
+        tm.getAllCars((err, data) => {
+            if (!err) {
+                res.render('product', {
+                    title: 'Cars',
+                    isAuthenticated : req.isAuthenticated(),
+                    user : req.user,
+                    data: data
+                }); 
+            }
+        })
     }
 
     // blog(req, res, next) {
@@ -103,10 +113,35 @@ class TeamController {
             if (!err) {
                 res.render('product-detail', {
                     title: 'Product detail',
-                    data: data
+                    data: data,
+                    isAuthenticated : req.isAuthenticated(),
+                    user : req.user
                 }); 
             }
         })
+    }
+
+    addNewCar(req, res, next) {
+        let car = {
+            //productCode: (req.body.productCode || 0),
+            model: req.body.model, 
+            year: req.body.year,
+            transmmission: req.body.transmmission,
+            cylinders: req.body.cylinders,
+            price: req.body.price,
+            sucursales_sucursalCode: req.body.sucursales_sucursalCode,
+            sucursales_mainAgency_idAgencyCode: req.body.sucursales_mainAgency_idAgencyCode
+        };
+
+        console.log(car);
+        tm.saveCar(car, (err) => {
+            if (!err) {
+                req.flash('info', 'Car added correctly.');
+                res.redirect('/allCars');
+            } else {
+                return next(new Error('Registro no salvado'));
+            }
+        });
     }
 
     prueba(req, res, next) {
@@ -115,7 +150,7 @@ class TeamController {
 
         tm.getOne(id, (err, data) => {
             if (!err) {
-                res.render('prueba', { 
+                res.render('edit', { 
                     title: 'Editar vendedor',
                     data: data 
                 });
@@ -125,11 +160,16 @@ class TeamController {
 
     
     signup(req, res, next) { 
-        res.render('users/signup');
+        res.render('users/signup', {
+            title: 'Sign up'
+        });
     }
 
     login(req, res, next) {
-        res.render('users/login', {message: req.flash('info'), authmessage : req.flash('authmessage')});
+        res.render('users/login', {
+            message: req.flash('info'), authmessage : req.flash('authmessage'),
+            title: 'Log in'
+        });
     }
 
     // Cerrar sesion
@@ -155,12 +195,36 @@ class TeamController {
         console.log(employeed);
         tm.saveUser(employeed, (err) => {
             if (!err) {
-                req.flash('info', 'Usuario registrado exitosamente.');
+                req.flash('info', 'User registered correctly, now you can sign in.');
                 res.redirect('/login');
             } else {
                 return next(new Error('Registro no salvado'));
             }
         });
+    }
+
+    getAllCars(req, res, next) {
+        tm.getAllCars((err, data) => {
+            if (!err) {
+                res.render('allCars', {
+                    title: 'Manage vehicles',
+                    data: data
+                }); 
+            }
+        })
+    }
+
+    deleteCar(req, res, next) {
+
+        let id = req.params.id; 
+        console.log(id)
+        tm.deleteCar(id, (err, data) => {
+            if (!err) {
+                res.redirect('/managevehicles')
+            } else {
+                return next(new Error('Car not found'))
+            }
+        }); 
     }
 
     addUser(req, res, next) {

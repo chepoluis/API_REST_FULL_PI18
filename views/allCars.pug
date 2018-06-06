@@ -1,0 +1,45 @@
+extends ./includes/layout.pug
+
+block content
+    section.container
+        // La clase se declara con un punto .
+        h1.header= title  
+        article.item
+            div
+                // Boton con bootstrap
+                a.button.add(href="/add", class="btn btn-primary") Add new car
+            if(data.length)
+                table.table.table-dark
+                    tr
+                        th Product code
+                        th Model
+                        th Year
+                        th Color
+                        th Transmission 
+                        th Cylinders
+                        th Price 
+                        th
+                    each car in data
+                        tr
+                            td #{car.productCode}
+                            td #{car.model}
+                            td #{car.year}
+                            td #{car.color}
+                            td #{car.transmmission}
+                            td #{car.cylinders}
+                            td #{car.price}
+                            td
+                                a.button.edit(href="/editar/"+ car.productCode) Editar
+                            td
+                                form(method="post", action="/delete/"+ car.productCode)
+                                    input(type="hidden",name="_method", value="DELETE")
+                                    input.button.delete(type="button", value="Delete", onclick="eliminar(this)")
+                     
+                script.
+                    function eliminar(input){
+                        let deleteOK = confirm('¿Estás seguro de eliminar el registro'); // funcion Dos botones aceptar y rechazar
+                        return (deleteOK) ? input.parentNode.submit() : false;
+                        //ParentNode es saber su padre
+                    }
+            else
+                div.error Doesn't have cars to show

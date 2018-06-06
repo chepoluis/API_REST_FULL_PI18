@@ -18,20 +18,24 @@ router
     .get('/prueba/:id', tc.prueba)
     .get('/adduser', tc.addUser)
     .get('/panel', AuthMiddleware.isLogged, tc.getUserPanel)
+    .get('/managevehicles', tc.getAllCars)
+    .get('/add', tc.addNewCar)
 
     .get('/logout', tc.logout)
     
     // .post('/', tc.save)
     .post('/registeruser', tc.saveUser)
     .post('/login', passport.authenticate('local', {
-        successRedirect : '/',
         failureRedirect : '/login',
+        successRedirect : '/',
         failureFlash : true
     }))
+    .post('/savecar', tc.addNewCar)
 
     .put('/actualizar/:id', tc.save)
 
     .delete('/eliminar/:id', tc.delete)
+    .delete('/delete/:id', tc.deleteCar)
 
     .use(tc.error404);
 
