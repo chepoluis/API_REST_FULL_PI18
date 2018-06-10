@@ -36,6 +36,9 @@ class TeamModel {
         });
     }
 
+    getCar(productCode, cb) {
+        conn.query('SELECT * FROM cars WHERE productCode = ?', productCode, cb);
+    }
 
     delete(id, cb) {
         conn.query('DELETE FROM seller WHERE idSeller = ?', id, cb);

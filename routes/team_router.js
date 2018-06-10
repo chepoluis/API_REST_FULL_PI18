@@ -14,12 +14,13 @@ router
     .get('/register', tc.signup)
     .get('/login', tc.login)
     .get('/productdetail', tc.productDetail)
-    .get('/blog', tc.blog)
+    .get('/blog', tc.blog) 
     .get('/prueba/:id', tc.prueba)
     .get('/adduser', tc.addUser)
     .get('/panel', AuthMiddleware.isLogged, tc.getUserPanel)
     .get('/managevehicles', tc.getAllCars)
     .get('/add', tc.addNewCar)
+    .get('/showDataCar/:productCode', tc.getOneCar)
 
     .get('/logout', tc.logout)
     
@@ -30,9 +31,10 @@ router
         successRedirect : '/',
         failureFlash : true
     }))
-    .post('/savecar', tc.addNewCar)
+    .post('/savecar', tc.saveNewCar)
 
     .put('/actualizar/:id', tc.save)
+    .put('/updateCar/:id', tc.saveNewCar)
 
     .delete('/eliminar/:id', tc.delete)
     .delete('/delete/:id', tc.deleteCar)

@@ -83,20 +83,6 @@ class TeamController {
         })
     }
 
-    // blog(req, res, next) {
-    //     let id = req.params.id; 
-    //     console.log(id);
-
-    //     tm.getOne(id, (err, data) => {
-    //         if (!err) {
-    //             res.render('blog', { 
-    //                 title: 'Editar vendedor',
-    //                 data: data 
-    //             });
-    //         }
-    //     })
-    // } 
-
     blog(req, res, next) {
         tm.getAll((err, data) => {
             if (!err) {
@@ -109,7 +95,7 @@ class TeamController {
     }
 
     productDetail(req, res, next) {
-        tm.getAll((err, data) => {
+        tm.getAllCars((err, data) => {
             if (!err) {
                 res.render('product-detail', {
                     title: 'Product detail',
@@ -119,29 +105,6 @@ class TeamController {
                 }); 
             }
         })
-    }
-
-    addNewCar(req, res, next) {
-        let car = {
-            //productCode: (req.body.productCode || 0),
-            model: req.body.model, 
-            year: req.body.year,
-            transmmission: req.body.transmmission,
-            cylinders: req.body.cylinders,
-            price: req.body.price,
-            sucursales_sucursalCode: req.body.sucursales_sucursalCode,
-            sucursales_mainAgency_idAgencyCode: req.body.sucursales_mainAgency_idAgencyCode
-        };
-
-        console.log(car);
-        tm.saveCar(car, (err) => {
-            if (!err) {
-                req.flash('info', 'Car added correctly.');
-                res.redirect('/allCars');
-            } else {
-                return next(new Error('Registro no salvado'));
-            }
-        });
     }
 
     prueba(req, res, next) {
@@ -212,6 +175,55 @@ class TeamController {
                 }); 
             }
         })
+    }
+
+    saveNewCar(req, res, next) {
+        let car = {
+            productCode: (req.body.productCode || 0),
+            model: req.body.model, 
+            year: req.body.year,
+            color: req.body.color,
+            transmmission: req.body.transmmission,
+            cylinders: req.body.cylinders,
+            price: req.body.price,
+            sucursales_sucursalCode: req.body.sucursales_sucursalCode,
+            sucursales_mainAgency_idAgencyCode: req.body.sucursales_mainAgency_idAgencyCode
+        };
+
+        console.log(car);
+        tm.saveCar(car, (err) => {
+            if (!err) {
+                req.flash('info', 'Car added correctly.');
+                res.redirect('/managevehicles');
+            } else {
+                return next(new Error('Registro no salvado'));
+            }
+        });
+    }
+
+    getOneCar(req, res, next) {
+        // res.render('editCar', { 
+        //     title: 'Add new car'
+        // });
+        let productCode = req.params.productCode; 
+        console.log(productCode);
+
+        tm.getCar(productCode, (err, data) => {
+            if (!err) {
+                res.render('editCar', { 
+                    title: 'Edit car',
+                    data: data,
+                    productCode: req.params.productCode
+                });
+            }
+        }) 
+
+    }
+
+    addNewCar(req, res, next) { 
+        res.render('formularioCar', {
+            title: 'Add new car'
+        });
     }
 
     deleteCar(req, res, next) {

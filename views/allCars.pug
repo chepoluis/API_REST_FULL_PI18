@@ -7,9 +7,11 @@ block content
         article.item
             div
                 // Boton con bootstrap
-                a.button.add(href="/add", class="btn btn-primary") Add new car
+                a.button.add(href="/add", class="btn btn-primary") Add new car 
+                // Nota!
+                a.button.add(href="", class="btn btn-primary") Choose country 
             if(data.length)
-                table.table.table-dark
+                table.table.table-bordered.table-hover
                     tr
                         th Product code
                         th Model
@@ -29,15 +31,15 @@ block content
                             td #{car.cylinders}
                             td #{car.price}
                             td
-                                a.button.edit(href="/editar/"+ car.productCode) Editar
+                                a.button.edit(href="/showDataCar/"+ car.productCode) Edit
                             td
                                 form(method="post", action="/delete/"+ car.productCode)
                                     input(type="hidden",name="_method", value="DELETE")
-                                    input.button.delete(type="button", value="Delete", onclick="eliminar(this)")
+                                    input.button.delete(class="btn btn-danger" type="button", value="Delete", onclick="eliminar(this)")
                      
                 script.
                     function eliminar(input){
-                        let deleteOK = confirm('¿Estás seguro de eliminar el registro'); // funcion Dos botones aceptar y rechazar
+                        let deleteOK = confirm('Are you sure you want to delete the registration?'); // funcion Dos botones aceptar y rechazar
                         return (deleteOK) ? input.parentNode.submit() : false;
                         //ParentNode es saber su padre
                     }
