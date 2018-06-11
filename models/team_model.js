@@ -10,6 +10,10 @@ class TeamModel {
         conn.query('SELECT * FROM cars', cb);
     }
 
+    getAllReports(cb) {
+        conn.query('SELECT * FROM orders', cb);
+    }
+
     getOne(id, cb) {
         conn.query('SELECT * FROM seller WHERE idSeller = ?', id, cb);
     }
@@ -33,6 +37,17 @@ class TeamModel {
                 return (rows.length == 1)
                     ? conn.query('UPDATE cars SET ? WHERE productCode = ?', [data, data.productCode], cb)
                     : conn.query('INSERT INTO cars SET ?', data, cb);
+        });
+    }
+
+    saveOrder(data, cb) {
+        conn.query('SELECT * FROM orders WHERE idOrderNumber = ?', data.idOrderNumber, (err, rows) => {
+            console.log(`Numero de registros ${rows.length}`);
+
+            if (!err)
+                return (rows.length == 1)
+                    ? conn.query('UPDATE orders SET ? WHERE idOrderNumber = ?', [data, data.productCode], cb)
+                    : conn.query('INSERT INTO orders SET ?', data, cb);
         });
     }
 

@@ -1,0 +1,30 @@
+extends ./includes/layout.pug
+
+block content
+    section.container
+        // La clase se declara con un punto .
+        h1.header= title  
+        article.item
+            div
+            if(data.length)
+                table.table.table-bordered.table-hover
+                    tr
+                        th Order number
+                        th Customer
+                        th Date
+                        th Comments
+                        th Quantity 
+                        th Total
+                        th
+                    each order in data
+                        tr
+                            td #{order.idOrderNumber}
+                            td #{order.customer}
+                            td #{order.orderDate}
+                            td #{order.comments}
+                            td #{order.quantityOrdered}
+                            td #{order.total}
+                            td
+                     
+            else
+                div.error Doesn't have reports to show

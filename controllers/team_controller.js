@@ -95,16 +95,18 @@ class TeamController {
     }
 
     productDetail(req, res, next) {
-        tm.getAllCars((err, data) => {
+        let productCode = req.params.productCode; 
+        console.log(productCode);
+
+        tm.getCar(productCode, (err, data) => {
             if (!err) {
-                res.render('product-detail', {
+                res.render('product-detail', { 
                     title: 'Product detail',
                     data: data,
-                    isAuthenticated : req.isAuthenticated(),
-                    user : req.user
-                }); 
+                    productCode: req.params.productCode
+                });
             }
-        })
+        }) 
     }
 
     prueba(req, res, next) {
@@ -166,6 +168,17 @@ class TeamController {
         });
     }
 
+    getAllReports(req, res, next) {
+        tm.getAllReports((err, data) => {
+            if (!err) {
+                res.render('salesReporting', {
+                    title: 'Sales reporting',
+                    data: data
+                }); 
+            }
+        })
+    }
+
     getAllCars(req, res, next) {
         tm.getAllCars((err, data) => {
             if (!err) {
@@ -175,6 +188,34 @@ class TeamController {
                 }); 
             }
         })
+    }
+
+    saveOrder(req, res, next) {
+        let order = {
+            idOrderNumber: (req.body.idOrderNumber || 0),
+            customer: req.body.customer, 
+            orderDate: req.body.orderDate,
+            comments: req.body.comments,
+            quantityOrdered: req.body.quantityOrdered,
+            priceEach: req.body.priceEach,
+            total: req.body.total,
+            employees_idEmployeed: 1,
+            employees_sucursales_sucursalCode: 1,
+            employees_sucursales_mainAgency_idAgencyCode: 1
+            // employees_idEmployeed: req.body.employees_idEmployeed,
+            // employees_sucursales_sucursalCode: req.body.employees_sucursales_sucursalCode,
+            // employees_sucursales_mainAgency_idAgencyCode: req.body.employees_sucursales_mainAgency_idAgencyCode
+        };
+
+        console.log(order);
+        tm.saveOrder(order, (err) => {
+            if (!err) {
+                req.flash('info', 'Order saved correctly.');
+                res.redirect('/');
+            } else {
+                return next(new Error('Registro no salvado'));
+            }
+        });
     }
 
     saveNewCar(req, res, next) {
@@ -204,7 +245,7 @@ class TeamController {
     getOneCar(req, res, next) {
         // res.render('editCar', { 
         //     title: 'Add new car'
-        // });
+        // }); 
         let productCode = req.params.productCode; 
         console.log(productCode);
 

@@ -9,6 +9,8 @@ const express = require('express'),
     viewDir = `${__dirname}/views`,
     port = (process.env.PORT || 3000 );
 
+// let formidable = require("express-formidable");
+
 // Alertas y manejo de sesiones
 let flash = require('connect-flash');
 let session = require('express-session');
@@ -16,6 +18,7 @@ let passport = require('passport');
 require('./passport/passport')(passport);
 
 let app = express();
+
 
 // app.use(cookieParser());
 // middleware
@@ -26,6 +29,7 @@ app.use(session({
   saveUninitialized: false
 }));
 app.use(flash());
+// app.use(formidable.parse({ keepExtensions: true }));
 
 // passport
 app.use(passport.initialize());

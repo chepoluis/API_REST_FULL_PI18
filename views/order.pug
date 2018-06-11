@@ -5,7 +5,7 @@
 <html lang="en" >
 <head>
     <meta charset="UTF-8">
-    <title>Edit car</title>
+    <title>Buy car</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'>
@@ -14,13 +14,10 @@
 </head>
 <body>
 <div class="container">
-<form class="well form-horizontal" action="/updateCar/data[0].productCode" method="post"  id="contact_form">
-    input(type="hidden", name="_method", value="PUT")
-    input(type="hidden", name="productCode", value=data[0].productCode)
+<form class="well form-horizontal" action="/buy" method="post"  id="contact_form">
     <fieldset>
         <!-- Form Name -->
-        <legend>Edit car</legend>
-        <!-- Text input-->
+        <legend>Buy car</legend>
         //- <div class="form-group">
         //- <label class="col-md-4 control-label">Product code</label>  
         //- <div class="col-md-4 inputGroupContainer">
@@ -32,89 +29,86 @@
         //- </div>
         <!-- Text input-->
         <div class="form-group">
+        <label class="col-md-4 control-label">Customer name</label>  
+        <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
+        input(class="form-control" type="text", name="customer", placeholder="Customer name", required)
+        </div>
+        </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
         <label class="col-md-4 control-label">Model</label>  
         <div class="col-md-4 inputGroupContainer">
         <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-        input(class="form-control" type="text", name="model", placeholder="Model", value=data[0].model)
+        input(class="form-control" type="text", name="model", placeholder="Model", value=data[0].model, disabled)
         </div>
         </div>
         </div>
+
         <!-- Text input-->
         <div class="form-group">
         <label class="col-md-4 control-label">Year</label>  
         <div class="col-md-4 inputGroupContainer">
         <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-        input(class="form-control" type="text", name="year", placeholder="Year", value=data[0].year)
+        input(class="form-control" type="text", name="year", placeholder="Year", value=data[0].year, disabled)
         </div>
         </div>
         </div>
+
         <!-- Text input-->
         <div class="form-group">
         <label class="col-md-4 control-label">Color</label>  
         <div class="col-md-4 inputGroupContainer">
         <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-        input(class="form-control" type="text", name="color", placeholder="Color", value=data[0].color)
+        input(class="form-control" type="text", name="color", placeholder="Color", value=data[0].color, disabled)
         </div>
         </div>
         </div>
+
         <!-- Text input-->
         <div class="form-group">
         <label class="col-md-4 control-label">Transmission</label>  
         <div class="col-md-4 inputGroupContainer">
         <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-        input(class="form-control" type="text", name="transmmission", placeholder="Transmission", value=data[0].transmmission)
+        input(class="form-control" type="text", name="transmmission", placeholder="Transmission", value=data[0].transmmission, disabled)
         </div>
         </div>
         </div>
+
         <!-- Text input-->
         <div class="form-group">
         <label class="col-md-4 control-label">Cylinders</label>  
         <div class="col-md-4 inputGroupContainer">
         <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-        input(class="form-control" type="text", name="cylinders", placeholder="Cylinders", value=data[0].cylinders)
+        input(class="form-control" type="text", name="cylinders", placeholder="Cylinders", value=data[0].cylinders, disabled)
         </div>
         </div>
         </div>
+
         <!-- Text input-->
         <div class="form-group">
         <label class="col-md-4 control-label">Price</label>  
         <div class="col-md-4 inputGroupContainer">
         <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-        input(class="form-control" type="text", name="price", placeholder="Price", value=data[0].price)
+        input(class="form-control" type="text", name="price", placeholder="Price", value="$"+data[0].price, disabled)
         </div>
         </div>
         </div>
-        <!-- Text input-->
-        <div class="form-group">
-        <label class="col-md-4 control-label">Sucursal code</label>  
-        <div class="col-md-4 inputGroupContainer">
-        <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-        input(class="form-control" type="text", name="sucursales_sucursalCode", placeholder="Sucursal code", value=data[0].sucursales_sucursalCode)
-        </div>
-        </div>
-        </div>
-        <!-- Text input-->
-        <div class="form-group">
-        <label class="col-md-4 control-label">Agency code</label>  
-        <div class="col-md-4 inputGroupContainer">
-        <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-        input(class="form-control" type="text", name="sucursales_mainAgency_idAgencyCode", placeholder="Agency code", value=data[0].sucursales_mainAgency_idAgencyCode)
-        </div>
-        </div>
-        </div>
+
         <!-- Button --> 
         <div class="form-group">
         <label class="col-md-4 control-label"></label>
         <div class="col-md-4">
-        <button type="submit" class="btn btn-warning">Save <span class="glyphicon glyphicon-floppy-disk"></span></button>
+        <button type="submit" class="btn btn-warning">Buy<span></span></button>
         </div>
         </div>
     </fieldset>

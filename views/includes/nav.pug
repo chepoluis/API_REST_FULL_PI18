@@ -9,7 +9,7 @@ nav(class="navbar navbar-default")
                     <img src="images/icons/mazda-nombre.png" alt="IMG-LOGO">
                 </a>
                 <!-- Si se inicio sesión se muestra el menu -->	
-                <!-- if isAuthenticated -->
+                if isAuthenticated
                     <!-- Menu -->
                     <div class="wrap_menu">
                         <nav class="menu">
@@ -17,26 +17,33 @@ nav(class="navbar navbar-default")
                                 <li>
                                     a.button.edit(href="/product") Vehicles
                                 </li>
-                                <li class="sale-noti">
-                                    <a href="product.html">*Sale*</a>
-                                </li>
                                 <li>
-                                    <a href="/adduser">*Add user test*</a>
-                                </li>
-                                <li>
-                                    <a href="/blog/1">Sales reporting</a>
+                                    <a href="/reporting">Sales reporting</a>
                                 </li>
                                 <li>
                                     <a href="/managevehicles">Manage vehicles</a>
                                 </li>
+                            </ul>
+                        </nav>
+                    </div>
+                else 
+                    <!-- Menu (erro en el nav) -->
+                    <div class="wrap_menu">
+                        <nav class="menu">
+                            <ul class="main_menu">
                                 <li>
-                                    <a href="/prueba/1">*Prueba*</a>
-                                    //- p= 'Bienvenido ' + user.completeName
+                                    a.button.edit(href="/product") Vehicles
+                                </li>
+                                <li>
+                                    <a href="/reporting">Sales reporting</a>
+                                </li>
+                                <li>
+                                    <a href="/managevehicles">Manage vehicles</a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
-                
+
                 if isAuthenticated
                     <div class="header-icons">
                         p= 'Welcome ' + user.completeName
@@ -46,6 +53,7 @@ nav(class="navbar navbar-default")
                             <a href="/logout">Log out</a>
                         </a>
                     </div>
+                    
                 //- Si no esta registrado se mostrara lo siguiente
                 if !isAuthenticated
                     <!-- Header Icon -->
