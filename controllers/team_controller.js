@@ -168,6 +168,30 @@ class TeamController {
         });
     }
 
+    saveEmployee(req, res, next) {
+        let employeed = {
+            idEmployeed: (req.body.idEmployeed || 0),
+            completeName: req.body.completeName, 
+            adressLine: req.body.adressLine,
+            cellphone: req.body.cellphone,
+            email: req.body.email,
+            password: req.body.password,
+            workstation: req.body.workstation,
+            sucursales_sucursalCode: req.body.sucursales_sucursalCode,
+            sucursales_mainAgency_idAgencyCode: req.body.sucursales_mainAgency_idAgencyCode
+        };
+
+        console.log(employeed);
+        tm.saveUser(employeed, (err) => {
+            if (!err) {
+                req.flash('info', 'Employee registered correctly');
+                res.redirect('/employees');
+            } else {
+                return next(new Error('Registro no salvado'));
+            }
+        });
+    }
+
     getAllReports(req, res, next) {
         tm.getAllReports((err, data) => {
             if (!err) {
@@ -184,6 +208,46 @@ class TeamController {
             if (!err) {
                 res.render('allCars', {
                     title: 'Manage vehicles',
+                    message: req.flash('info'), authmessage : req.flash('authmessage'),
+                    data: data
+                }); 
+            }
+        })
+    } 
+
+    getCarsSucursal(req, res, next) {
+        let sucursalCode = req.params.sucursalCode; 
+        console.log(sucursalCode);
+
+        tm.getCarsSucursal(sucursalCode, (err, data) => {
+            if (!err) {
+                res.render('carsSucursal', {    
+                    title: 'Manage vehicles',
+                    data: data 
+                });
+            }
+        })
+    }
+
+
+    getSucursales(req, res, next) {
+        tm.getSucursales((err, data) => {
+            if (!err) {
+                res.render('sucursales', {
+                    title: 'Subsidiaries',
+                    message: req.flash('info'), authmessage : req.flash('authmessage'),
+                    data: data
+                }); 
+            }
+        })
+    }
+
+    getEmployees(req, res, next) {
+        tm.getEmployees((err, data) => {
+            if (!err) {
+                res.render('employees', {
+                    title: 'Employees',
+                    message: req.flash('info'), authmessage : req.flash('authmessage'),
                     data: data
                 }); 
             }
@@ -242,6 +306,29 @@ class TeamController {
         });
     }
 
+    saveSucursal(req, res, next) {
+        let sucursal = {
+            sucursalCode: (req.body.sucursalCode || 0),
+            sucursalName: req.body.sucursalName, 
+            quantityInStock: req.body.quantityInStock,
+            adressLine: req.body.adressLine,
+            city: req.body.city,
+            state: req.body.state,
+            country: req.body.country,
+            mainAgency_idAgencyCode: req.body.mainAgency_idAgencyCode
+        };
+
+        console.log(sucursal);
+        tm.saveSucursal(sucursal, (err) => {
+            if (!err) {
+                req.flash('info', 'Subsidaries added correctly.');
+                res.redirect('/sucursales');
+            } else {
+                return next(new Error('Registro no salvado'));
+            }
+        });
+    }
+
     getOneCar(req, res, next) {
         // res.render('editCar', { 
         //     title: 'Add new car'
@@ -258,12 +345,51 @@ class TeamController {
                 });
             }
         }) 
+    }
 
+    getOneSucursal(req, res, next) {
+        let sucursalCode = req.params.sucursalCode; 
+        console.log(sucursalCode);
+
+        tm.getSucursal(sucursalCode, (err, data) => {
+            if (!err) {
+                res.render('editSucursal', { 
+                    title: 'Edit subsidiaries',
+                    data: data
+                });
+            }
+        }) 
+    }
+
+    getOneEmployee(req, res, next) {
+        let idEmployeed = req.params.idEmployeed; 
+        console.log(idEmployeed);
+
+        tm.getEmployee(idEmployeed, (err, data) => {
+            if (!err) {
+                res.render('editEmployee', { 
+                    title: 'Edit employee',
+                    data: data
+                });
+            }
+        }) 
     }
 
     addNewCar(req, res, next) { 
         res.render('formularioCar', {
             title: 'Add new car'
+        });
+    }
+
+    addSucursal(req, res, next) { 
+        res.render('addSucursal', {
+            title: 'Add new subsidiaries'
+        });
+    }
+
+    addEmployee(req, res, next) { 
+        res.render('addEmployee', {
+            title: 'Add new employee'
         });
     }
 
@@ -276,6 +402,32 @@ class TeamController {
                 res.redirect('/managevehicles')
             } else {
                 return next(new Error('Car not found'))
+            }
+        }); 
+    }
+
+    deleteSucursal(req, res, next) {
+
+        let id = req.params.id; 
+        console.log(id)
+        tm.deleteSucursal(id, (err, data) => {
+            if (!err) {
+                res.redirect('/sucursales')
+            } else {
+                return next(new Error('Sucursales not found'))
+            }
+        }); 
+    }
+
+    deleteEmployee(req, res, next) {
+
+        let id = req.params.id; 
+        console.log(id)
+        tm.deleteEmployee(id, (err, data) => {
+            if (!err) {
+                res.redirect('/employees')
+            } else {
+                return next(new Error('Employees not found'))
             }
         }); 
     }

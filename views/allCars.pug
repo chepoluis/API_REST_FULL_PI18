@@ -2,15 +2,16 @@ extends ./includes/layout.pug
 
 block content
     section.container
-        // La clase se declara con un punto .
-        h1.header= title  
+        //-  La clase se declara con un punto .
+        h1.header= title 
         article.item
-            div
-                // Boton con bootstrap
-                a.button.add(href="/add", class="btn btn-primary") Add new car
-                // Nota!
-                a.button.add(href="", class="btn btn-primary") Choose country 
-            if(data.length)
+            div 
+            if message.length > 0
+                div(class='alert alert-success' role='alert')= message  
+            a.button.add(href="/add", class="btn btn-primary") Add new car
+            a.button.add(href="/manageVehiclesSucursal/2") Branch office Colima -
+            a.button.add(href="/manageVehiclesSucursal/1") Branch office Villa de Álvarez
+            if(data.length) 
                 table.table.table-bordered.table-hover
                     tr
                         th Product code

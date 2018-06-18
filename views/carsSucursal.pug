@@ -1,0 +1,44 @@
+extends ./includes/layoutDos.pug
+
+block content
+    h1.header= title 
+    article.item
+        div 
+        a.button.add(href="/add", class="btn btn-primary") Add new car
+        a.button.edit(href="/manageVehiclesSucursal/2") Branch office Colima -
+        a.button.edit(href="/manageVehiclesSucursal/1") Branch office Villa de Álvarez
+        if(data.length) 
+            table.table.table-bordered.table-hover
+                tr
+                    th Product code
+                    th Model
+                    th Year
+                    th Color
+                    th Transmission 
+                    th Cylinders
+                    th Price 
+                    th
+                each car in data
+                    tr
+                        td #{car.productCode}
+                        td #{car.model}
+                        td #{car.year}
+                        td #{car.color}
+                        td #{car.transmmission}
+                        td #{car.cylinders}
+                        td #{car.price}
+                        td
+                            a.button.edit(href="/showDataCar/"+ car.productCode) Edit
+                        td
+                            form(method="post", action="/delete/"+ car.productCode)
+                                input(type="hidden",name="_method", value="DELETE")
+                                input.button.delete(class="btn btn-danger" type="button", value="Delete", onclick="eliminar(this)")
+                
+            script.
+                function eliminar(input){
+                    let deleteOK = confirm('Are you sure you want to delete the registration?'); // funcion Dos botones aceptar y rechazar
+                    return (deleteOK) ? input.parentNode.submit() : false;
+                    //ParentNode es saber su padre
+                }
+        else
+            div.error Doesn't have cars to show

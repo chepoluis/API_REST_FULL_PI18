@@ -1,0 +1,44 @@
+extends ./includes/layout.pug
+
+block content
+    section.container
+        //-  La clase se declara con un punto .
+        h1.header= title  
+        article.item
+            div
+            if message.length > 0
+                div(class='alert alert-success' role='alert')= message            
+            a.button.add(href="/addSucursal", class="btn btn-primary") Add new subsidiaries
+            if(data.length) 
+                table.table.table-bordered.table-hover
+                    tr
+                        th Sucursal code
+                        th Sucursal name 
+                        th Adress line
+                        th City
+                        th State
+                        th Country 
+                        th
+                    each sucursal in data
+                        tr
+                            td #{sucursal.sucursalCode}
+                            td #{sucursal.sucursalName}
+                            td #{sucursal.adressLine}
+                            td #{sucursal.city}
+                            td #{sucursal.state}
+                            td #{sucursal.country}
+                            td
+                                a.button.edit(href="/showDataSucursal/"+ sucursal.sucursalCode) Edit
+                            td
+                                form(method="post", action="/deleteSucursal/"+ sucursal.sucursalCode)
+                                    input(type="hidden",name="_method", value="DELETE")
+                                    input.button.delete(class="btn btn-danger" type="button", value="Delete", onclick="eliminar(this)")
+                     
+                script.
+                    function eliminar(input){
+                        let deleteOK = confirm('Are you sure you want to delete the registration?'); // funcion Dos botones aceptar y rechazar
+                        return (deleteOK) ? input.parentNode.submit() : false;
+                        //ParentNode es saber su padre
+                    }
+            else
+                div.error Doesn't have sucursals to show

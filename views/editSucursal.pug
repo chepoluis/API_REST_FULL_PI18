@@ -14,9 +14,9 @@ block content
     </head>
     <body>
     <div class="container">
-    <form class="well form-horizontal" action="/updateCar/data[0].productCode" method="post"  id="contact_form">
+    <form class="well form-horizontal" action="/updateSucursal/data[0].sucursalCode" method="post"  id="contact_form">
         input(type="hidden", name="_method", value="PUT")
-        input(type="hidden", name="productCode", value=data[0].productCode)
+        input(type="hidden", name="sucursalCode", value=data[0].sucursalCode)
         <fieldset>
             <!-- Form Name -->
             <legend>Edit car</legend>
@@ -26,77 +26,67 @@ block content
             //- <div class="col-md-4 inputGroupContainer">
             //- <div class="input-group">
             //- <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-            //- input(class="form-control" type="text", name="productCode", placeholder="Product code", value=data[0].productCode)
+            //- input(class="form-control" type="text", name="sucursalCode", placeholder="Product code", value=data[0].sucursalCode)
             //- </div>
             //- </div>
             //- </div>
             <!-- Text input-->
             <div class="form-group">
-            <label class="col-md-4 control-label">Model</label>  
+            <label class="col-md-4 control-label">Sucursal name</label>  
             <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-            input(class="form-control" type="text", name="model", placeholder="Model", value=data[0].model)
+            input(class="form-control" type="text", name="sucursalName", placeholder="Sucursal name", value=data[0].sucursalName)
             </div>
             </div>
             </div>
             <!-- Text input-->
             <div class="form-group">
-            <label class="col-md-4 control-label">Year</label>  
+            <label class="col-md-4 control-label">Quantity in stock</label>  
             <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-            input(class="form-control" type="text", name="year", placeholder="Year", value=data[0].year)
+            input(class="form-control" type="text", name="quantityInStock", placeholder="Quantity in stock", value=data[0].quantityInStock)
             </div>
             </div>
             </div>
             <!-- Text input-->
             <div class="form-group">
-            <label class="col-md-4 control-label">Color</label>  
+            <label class="col-md-4 control-label">Adress line</label>  
             <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-            input(class="form-control" type="text", name="color", placeholder="Color", value=data[0].color)
+            input(class="form-control" type="text", name="adressLine", placeholder="Adress line", value=data[0].adressLine)
             </div>
             </div>
             </div>
             <!-- Text input-->
             <div class="form-group">
-            <label class="col-md-4 control-label">Transmission</label>  
+            <label class="col-md-4 control-label">City</label>  
             <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-            input(class="form-control" type="text", name="transmmission", placeholder="Transmission", value=data[0].transmmission)
+            input(class="form-control" type="text", name="city", placeholder="City", value=data[0].city)
+            </div>
+            </div>
+            </div>
+            <!-- Text input-->  
+            <div class="form-group">
+            <label class="col-md-4 control-label">State</label>  
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
+            input(class="form-control" type="text", name="state", placeholder="State", value=data[0].state)
             </div>
             </div>
             </div>
             <!-- Text input-->
             <div class="form-group">
-            <label class="col-md-4 control-label">Cylinders</label>  
+            <label class="col-md-4 control-label">Country</label>  
             <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-            input(class="form-control" type="text", name="cylinders", placeholder="Cylinders", value=data[0].cylinders)
-            </div>
-            </div>
-            </div>
-            <!-- Text input-->
-            <div class="form-group">
-            <label class="col-md-4 control-label">Price</label>  
-            <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-            input(class="form-control" type="text", name="price", placeholder="Price", value=data[0].price)
-            </div>
-            </div>
-            </div>
-            <!-- Text input-->
-            <div class="form-group">
-            <label class="col-md-4 control-label">Sucursal code</label>  
-            <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-            input(class="form-control" type="text", name="sucursales_sucursalCode", placeholder="Sucursal code", value=data[0].sucursales_sucursalCode)
+            input(class="form-control" type="text", name="country", placeholder="Country", value=data[0].country)
             </div>
             </div>
             </div>
@@ -106,7 +96,7 @@ block content
             <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-            input(class="form-control" type="text", name="sucursales_mainAgency_idAgencyCode", placeholder="Agency code", value=data[0].sucursales_mainAgency_idAgencyCode)
+            input(class="form-control" type="text", name="mainAgency_idAgencyCode", placeholder="Agency code", value=data[0].mainAgency_idAgencyCode)
             </div>
             </div>
             </div>
